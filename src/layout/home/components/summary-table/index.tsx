@@ -7,11 +7,18 @@ const weekDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
 
 export function SummaryTable () {
 
-  const summaryDays = generateDaysOfTheYearToMoment()
+  const { days, placeholderDays } = generateDaysOfTheYearToMoment()
 
-  const renderCells = summaryDays.map((day, index) => (
+
+
+  const renderCells = days.map((day, index) => (
     <Habit key={index} />
   ))
+
+  const renderPlaceholderDays = placeholderDays.map((day, index) => (
+    <Habit key={index} />
+  ))
+
   const renderDays = weekDays.map((day, index) => (
     <Styles.Day key={index}>{day}</Styles.Day>
   ))
@@ -26,6 +33,7 @@ export function SummaryTable () {
           </Styles.GridHeader>
           <Styles.GridBody>
             {renderCells}
+            {renderPlaceholderDays}
           </Styles.GridBody>
         </Styles.Grid>
       </div>
