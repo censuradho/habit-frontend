@@ -12,8 +12,9 @@ export function HomeLayout () {
           gap={4}
         >
           <Header />
+          <SummaryTable />
         </Box>
-        <SummaryTable />
+
       </Container>
     </Styles.Main>
   )
