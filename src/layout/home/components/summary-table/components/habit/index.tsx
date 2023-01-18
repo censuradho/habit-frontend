@@ -1,8 +1,15 @@
 import * as Styles from './styles'
-// import { ComponentProps } from './types'
 
-export function Habit () {
+import { HabitProps } from './types'
+
+export function Habit (props: HabitProps) {
+  const { 
+    disabled 
+  } = props
+
   return (
-    <Styles.Container></Styles.Container>
+    <Styles.Container
+      disabled={disabled}
+    ></Styles.Container>
   )
 }

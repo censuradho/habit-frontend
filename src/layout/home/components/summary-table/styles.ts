@@ -18,14 +18,16 @@ export const GridHeader = styled('div', {
   gap: '.75rem',
   position: 'sticky',
   left: 0,
-  background: `linear-gradient(90deg,$background 90%,hsla(0,0%,100%,0))`
+  top: 0,
+  zIndex: 2,
+  background: `linear-gradient(90deg, $background 90%, hsla(0,0%,100%,0))`
 })
 
 export const GridBody = styled('div', {
   display: 'grid',
   gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
   gridAutoFlow: 'column',
-  gap: '.75rem'
+  gap: '.75rem',
 })
 
 export const Cell = styled('div', {
