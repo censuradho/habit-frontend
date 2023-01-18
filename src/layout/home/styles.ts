@@ -8,10 +8,3 @@ export const Main = styled('main', {
   alignItems: 'center',
   justifyContent: 'center'
 })
-
-export const Header = styled('header', {
-  width: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between'
-})

@@ -13,7 +13,7 @@ export const colors = {
   heading: '#fff',
   foreground: gray.gray800,
   foregroundLight: gray.gray700,
-  primaryLight: '#c2eb47',
+  primaryLight: '#dfff80',
   primary: '#ccff33',
   primaryDar: '#c2eb47',
   valid: '#22C55E'
