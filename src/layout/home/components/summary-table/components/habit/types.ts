@@ -1,7 +1,7 @@
 import { VariantProps } from '@stitches/react'
 
-import { Container } from './styles'
+import { Trigger } from './styles'
 
-export interface HabitProps extends VariantProps<typeof Container> {
+export interface HabitProps extends VariantProps<typeof Trigger> {
 
 }
