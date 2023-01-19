@@ -11,6 +11,12 @@ export async function findByDate (date: string | Date) {
   return api.get<FindHabitByDateResponse[]>(`/habits?${query}`)
 }
 
+async function findSummary () {
+  return api.get<FindHabitByDateResponse[]>('/summary')
+
+}
+
 export const habitServer = {
-  findByDate
+  findByDate,
+  findSummary
 }

@@ -1,7 +1,7 @@
-import { FindHabitByDateResponse } from "@/services/server/habit/types"
+import { FindHabitByDateResponse, Summary } from "@/services/server/habit/types"
 
-export type HabitData =FindHabitByDateResponse
+export type SummaryData = Summary
 
 export interface HabitContextData {
-  data?: HabitData
+  summary?: SummaryData
 }

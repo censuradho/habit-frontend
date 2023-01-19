@@ -7,18 +7,18 @@ import {
 
 import type { 
   HabitContextData, 
-  HabitData 
+  SummaryData 
 } from "./types";
 
 const HabitContext = createContext({} as HabitContextData)
 
 export function HabitProvider ({ children }: PropsWithChildren) {
-  const [data, setData] = useState<HabitData>()
+  const [summary, setSummary] = useState<SummaryData>()
   
   return (
     <HabitContext.Provider 
       value={{
-        data
+        summary
       }}
     >
       {children}
