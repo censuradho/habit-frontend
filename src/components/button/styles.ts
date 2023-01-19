@@ -37,6 +37,18 @@ export const Button = styled('button', {
 
         }
       },
+      confirm: {
+        background: '$valid',
+        padding: '0.7rem 1rem',
+
+        '&:disabled': {
+          background: '$disabled'
+        },
+        '> *': {
+          color: '$heading',
+          fontWeight: 600
+        },
+      },
       danger: {
         background: '$error',
         padding: '0.7rem 1rem',
@@ -55,17 +67,13 @@ export const Button = styled('button', {
       },
       stroke: {
         background: 'none',
-        border: '1px solid $primary',
+        border: '1px solid white',
         padding: '0.7rem 1rem',
         color: 'white',
         fontWeight: 600,
-        svg: {
-          path: {
-            stroke: 'white'
-          }
-        },
+      
         '&:hover': {
-          borderColor: 'white',
+          borderColor: '$primary',
         },
         '> *': {
           color: '$white',
@@ -87,8 +95,4 @@ export const Button = styled('button', {
 
 export const LoaderContainer = styled('div', {
   position: 'absolute',
-
-  svg: {
-    width: '36px'
-  }
 })

@@ -1,3 +1,4 @@
+import { StandardLonghandProperties } from "@stitches/react/types/css";
 import { differenceInDays, startOfYear } from "date-fns";
 
 interface GenerateDaysOfTheYearToMomentOptions {
@@ -30,4 +31,18 @@ export function generateDaysOfTheYearToMoment (options?: GenerateDaysOfTheYearTo
     amountOfDaysToFill,
     placeholderDays
   }
+}
+
+export function parseToVariant <T> (obj: Record<string, string>, property: keyof StandardLonghandProperties) {
+  return Object
+    .entries(obj)
+    .map(([value]) => ({
+      [value]: {
+        [property]: `$${value}`
+      }
+    }))
+    .reduce((prev, next) => ({
+      ...prev,
+      ...next
+    }), {}) as unknown as T
 }

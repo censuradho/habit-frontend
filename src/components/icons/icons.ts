@@ -1,7 +1,11 @@
 import {
-  GrAdd
-} from '@meronex/icons/gr';
+  RiAddLine
+} from 'react-icons/ri';
+import {
+  AiOutlineClose
+} from 'react-icons/ai';
 
 export const icons = {
-  add: GrAdd
+  add: RiAddLine,
+  close: AiOutlineClose
 }

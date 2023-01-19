@@ -10,6 +10,7 @@ export const colors = {
   ...gray,
   placeholder: gray.gray400,
   background: gray.gray900,
+  backgroundOpacity: 'rgba(0, 0, 0, .4)',
   heading: '#fff',
   foreground: gray.gray800,
   foregroundLight: gray.gray700,
