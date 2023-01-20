@@ -1,4 +1,4 @@
-import { Box, Typography } from '@/components'
+import { Box, Checkbox, Typography } from '@/components'
 import { format } from 'date-fns'
 
 import * as Styles from './styles'
@@ -26,6 +26,9 @@ export function Habit (props: HabitProps) {
           <Styles.ProgressRoot value={33}>
             <Styles.ProgressIndicator  style={{ transform: `translateX(-${100 - 10}%)` }}  />
           </Styles.ProgressRoot>
+          <Styles.List>
+            <Checkbox label="Teste" />
+          </Styles.List>
           <Styles.Arrow />
         </Styles.Content>
 

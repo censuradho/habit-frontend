@@ -3,6 +3,13 @@ import * as Progress from '@radix-ui/react-progress';
 
 import { styled, keyframes  } from 'stitches.config'
 
+export const List = styled('ul', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '1rem',
+  marginTop: '1.5rem'
+})
+
 const slideUpAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateY(2px)' },
   '100%': { opacity: 1, transform: 'translateY(0)' },

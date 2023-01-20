@@ -1,7 +1,11 @@
 import qs from 'querystring'
 
 import { api } from "../api";
-import { FindHabitByDateResponse } from './types';
+
+import type { 
+  FindHabitByDateResponse, 
+  Summary 
+} from './types';
 
 export async function findByDate (date: string | Date) {
   const query = qs.stringify({
@@ -12,8 +16,7 @@ export async function findByDate (date: string | Date) {
 }
 
 async function findSummary () {
-  return api.get<FindHabitByDateResponse[]>('/summary')
-
+  return api.get<Summary[]>('/summary')
 }
 
 export const habitServer = {

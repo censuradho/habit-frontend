@@ -21,6 +21,13 @@ export const Overlay = styled(Dialog.Overlay, {
 });
 
 
+export const List = styled('ul', {
+  marginTop: '1.5rem',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '1rem'
+})
+
 export const Content = styled(Dialog.Content, {
   backgroundColor: '$foreground',
   borderRadius: '$default',

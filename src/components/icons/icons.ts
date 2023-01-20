@@ -4,8 +4,12 @@ import {
 import {
   AiOutlineClose
 } from 'react-icons/ai';
+import {
+  MdDone
+} from 'react-icons/md';
 
 export const icons = {
   add: RiAddLine,
-  close: AiOutlineClose
+  close: AiOutlineClose,
+  done: MdDone
 }
