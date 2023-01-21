@@ -28,7 +28,6 @@ In the original project the [Frontend](https://github.com/rocketseat-education/n
 
 
 ## Getting start
-## How to Setup
 
 first clone or download the repositories backend/frontend
 
