@@ -12,7 +12,7 @@ export async function findByDate (date: string | Date) {
     date: new Date(date).toISOString()
   })
 
-  return api.get<FindHabitByDateResponse[]>(`/habits?${query}`)
+  return api.get<FindHabitByDateResponse>(`/habits?${query}`)
 }
 
 async function findSummary () {

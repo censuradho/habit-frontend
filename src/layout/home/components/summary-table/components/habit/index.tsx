@@ -1,7 +1,9 @@
 import { Box, Checkbox, Typography } from '@/components'
+import { habitServer } from '@/services/server/habit'
+import { FindHabitByDateResponse } from '@/services/server/habit/types'
 import clsx from 'clsx'
 import { format } from 'date-fns'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import * as Styles from './styles'
 
@@ -17,6 +19,7 @@ export function Habit (props: HabitProps) {
     date
   } = props
 
+  const [habit, setHabit] = useState<FindHabitByDateResponse>([])
   const completedPercent = amount > 0 ? Math.round(amount / completed) * 100 : 0
 
   const classes = useMemo(() => ({
@@ -28,6 +31,26 @@ export function Habit (props: HabitProps) {
     'bigger-80': completedPercent >= 80,
   }), [completedPercent])
 
+  const handleGetHabits = async (date: Date | string) => {
+    const response = await habitServer.findByDate(new Date(date).toISOString())
+
+    setHabit(response.data)
+  }
+
+  const renderHabits = habit?.possibles_habits?.map((habit, index) => (
+    <li key={index}>
+
+      <Checkbox
+        label={habit.title}
+      />
+    </li>
+  ))
+
+  useEffect(() => {
+    if (!date) return;
+
+    handleGetHabits(date)
+  }, [date])
 
   return (
     <Styles.Root>
@@ -45,7 +68,7 @@ export function Habit (props: HabitProps) {
             <Styles.ProgressIndicator  style={{ transform: `translateX(-${100 - 10}%)` }}  />
           </Styles.ProgressRoot>
           <Styles.List>
-            <Checkbox label="Teste" />
+            {renderHabits}
           </Styles.List>
           <Styles.Arrow />
         </Styles.Content>
