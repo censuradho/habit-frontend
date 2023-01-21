@@ -1,5 +1,5 @@
 import { StandardLonghandProperties } from "@stitches/react/types/css";
-import { differenceInDays, startOfYear } from "date-fns";
+import { addDays, differenceInDays, isBefore, startOfYear } from "date-fns";
 
 interface GenerateDaysOfTheYearToMomentOptions {
   minDays?: number
@@ -7,7 +7,7 @@ interface GenerateDaysOfTheYearToMomentOptions {
 
 export function generateDaysOfTheYearToMoment (options?: GenerateDaysOfTheYearToMomentOptions) {
   const { 
-    minDays = 18
+    minDays = 17
   } = options || {}
 
   const _minDays = minDays * 7
@@ -15,12 +15,17 @@ export function generateDaysOfTheYearToMoment (options?: GenerateDaysOfTheYearTo
   const firstDayOfTheYear = startOfYear(new Date())
   const today = new Date()
 
+  const days = [] as Date[]
+  let compareDate = firstDayOfTheYear
+
   const diff = differenceInDays(today, firstDayOfTheYear)
+
   const amountOfDaysToFill =  _minDays - diff
 
-  const days = Array(diff)
-    .fill(1)
-    .map((value, index) => index + 1)
+  while (isBefore(compareDate, today)) {
+    days.push(compareDate)
+    compareDate = addDays(compareDate, 1)
+  }
 
   const placeholderDays = Array(amountOfDaysToFill)
     .fill(1)
@@ -28,7 +33,6 @@ export function generateDaysOfTheYearToMoment (options?: GenerateDaysOfTheYearTo
 
   return {
     days,
-    amountOfDaysToFill,
     placeholderDays
   }
 }

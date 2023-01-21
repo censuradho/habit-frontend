@@ -59,6 +59,24 @@ export const Trigger = styled(Popover.Trigger, {
   background: '$foreground',
   border: '2px solid $foregroundLight',
 
+  '&.no-completed': {
+    background: 'foreground'
+  },
+  '&.under-20': {
+    background: '$neonGreen100',
+  },
+  '&.under-40': {
+    background: '$neonGreen200',
+  },
+  '&.under-60': {
+    background: '$neonGreen300',
+  },
+  '&.under-80': {
+    background: '$neonGreen400',
+  },
+  '&.bigger-80': {
+    background: '$neonGreen500',
+  },
   variants: {
     disabled: {
       true: {
