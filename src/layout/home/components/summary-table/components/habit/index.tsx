@@ -2,7 +2,7 @@ import { Box, Checkbox, Typography } from '@/components'
 import { habitServer } from '@/services/server/habit'
 import { FindHabitByDateResponse } from '@/services/server/habit/types'
 import clsx from 'clsx'
-import { format } from 'date-fns'
+import { format } from '@/lib/date-fns'
 import { useEffect, useMemo, useState } from 'react'
 
 import * as Styles from './styles'
@@ -19,7 +19,7 @@ export function Habit (props: HabitProps) {
     date
   } = props
 
-  const [habit, setHabit] = useState<FindHabitByDateResponse>([])
+  const [habit, setHabit] = useState<FindHabitByDateResponse | null>(null)
   const completedPercent = amount > 0 ? Math.round(amount / completed) * 100 : 0
 
   const classes = useMemo(() => ({
@@ -37,14 +37,27 @@ export function Habit (props: HabitProps) {
     setHabit(response.data)
   }
 
-  const renderHabits = habit?.possibles_habits?.map((habit, index) => (
-    <li key={index}>
+  const handleToggleHabit = async (id: string) => {
+    await habitServer.toggle(id)
+    if (date) await handleGetHabits(date)
+  }
+  console.log(habit?.completed_habits)
 
-      <Checkbox
-        label={habit.title}
-      />
-    </li>
-  ))
+  const renderHabits = habit?.possibles_habits?.map((possibleHabit, index) => {
+    const isCompleted = habit
+      ?.completed_habits
+      .includes(possibleHabit.id)
+
+    return (
+      <li key={index}>
+        <Checkbox
+          label={possibleHabit.title}
+          defaultChecked={isCompleted}
+          onCheckedChange={() => handleToggleHabit(possibleHabit.id)}
+        />
+      </li>
+    )
+  })
 
   useEffect(() => {
     if (!date) return;
@@ -61,8 +74,8 @@ export function Habit (props: HabitProps) {
       <Styles.Portal>
         <Styles.Content sideOffset={10}>
           <Box flexDirection="column">
-            <Typography color="gray400" size="sm">Terça-feira</Typography>
-            <Typography color="heading" size="lg" fontWeight="800">{format(new Date(), 'dd/MM')}</Typography>
+            <Typography color="gray400" size="sm">{date ? format(new Date(date), 'EEEE') : ' '}</Typography>
+            <Typography color="heading" size="lg" fontWeight="800">{date ? format(new Date(date), 'dd/MM') : ''}</Typography>
           </Box>
           <Styles.ProgressRoot value={33}>
             <Styles.ProgressIndicator  style={{ transform: `translateX(-${100 - 10}%)` }}  />

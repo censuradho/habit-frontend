@@ -27,7 +27,7 @@ export function SummaryTable () {
         key={index}
         completed={dayInSummary?.completed}  
         amount={dayInSummary?.amount}  
-        date={dayInSummary?.date}  
+        date={dayInSummary?.date || day}  
       />
     )
   }), [days, summary])

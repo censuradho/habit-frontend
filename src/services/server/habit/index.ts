@@ -19,7 +19,12 @@ async function findSummary () {
   return api.get<Summary[]>('/summary')
 }
 
+function toggle (id: string) {
+  return api.patch(`/habits/${id}/toggle  `)
+}
+
 export const habitServer = {
   findByDate,
-  findSummary
+  findSummary,
+  toggle
 }

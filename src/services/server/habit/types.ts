@@ -5,6 +5,8 @@ interface Day {
 
 export interface Habit {
   title: string
+  id: string
+  created_at: string
 }
 
 export interface Summary {
@@ -15,6 +17,6 @@ export interface Summary {
 }
 
 export interface FindHabitByDateResponse {
-  completed_habits: Habit[]
+  completed_habits: string[]
   possibles_habits: Habit[]
 }
