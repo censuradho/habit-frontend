@@ -1,4 +1,5 @@
 import { habitServer } from "@/services/server/habit";
+import { CreateHabitPayload } from "@/services/server/habit/types";
 import { 
   createContext, 
   useContext, 
@@ -16,7 +17,9 @@ const HabitContext = createContext({} as HabitContextData)
 
 export function HabitProvider ({ children }: PropsWithChildren) {
   const [summary, setSummary] = useState<SummaryData[]>()
-  
+  const [isLoading, setIsLoading] = useState(false)
+
+
   const handleGetSummary = async () => {
     const { data } = await habitServer.findSummary()
     setSummary(data)
@@ -29,7 +32,9 @@ export function HabitProvider ({ children }: PropsWithChildren) {
   return (
     <HabitContext.Provider 
       value={{
-        summary
+        summary,
+        isLoading,
+        getSummary: handleGetSummary
       }}
     >
       {children}

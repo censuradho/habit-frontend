@@ -13,6 +13,7 @@ const neonGreen = {
   neonGreen500: '#24E500',
   neonGreen600: '#1DB700',
   neonGreen700: '#168900',
+  neonGreen800: '#59981A'
 }
 
 export const colors = {

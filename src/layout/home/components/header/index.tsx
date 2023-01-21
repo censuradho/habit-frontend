@@ -8,7 +8,6 @@ export function Header () {
 
   return (
     <Styles.Header>
-      
       <Image src="/logo.svg" width={147} height={71} alt="logo"  />
       <CreateHabitDialog>
         <Button icon={{ name: 'add', color: 'heading' }} variant="stroke">Novo hábito</Button>

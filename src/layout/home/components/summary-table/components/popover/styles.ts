@@ -63,19 +63,19 @@ export const Trigger = styled(Popover.Trigger, {
     background: 'foreground'
   },
   '&.under-20': {
-    background: '$neonGreen800',
-  },
-  '&.under-40': {
-    background: '$neonGreen700',
-  },
-  '&.under-60': {
-    background: '$neonGreen600',
-  },
-  '&.under-80': {
     background: '$neonGreen100',
   },
-  '&.bigger-80': {
+  '&.under-40': {
+    background: '$neonGreen200',
+  },
+  '&.under-60': {
     background: '$neonGreen300',
+  },
+  '&.under-80': {
+    background: '$neonGreen400',
+  },
+  '&.bigger-80': {
+    background: '$neonGreen500',
   },
   variants: {
     disabled: {
@@ -99,7 +99,7 @@ export const ProgressRoot = styled(Progress.Root, {
 
 
 export const ProgressIndicator = styled(Progress.Indicator, {
-  backgroundColor: '$primary',
+  backgroundColor: '$primaryLight',
   width: '100%',
   height: '100%',
   transition: 'transform 660ms cubic-bezier(0.65, 0, 0.35, 1)',

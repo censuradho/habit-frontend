@@ -9,6 +9,7 @@ export interface Habit {
   created_at: string
 }
 
+
 export interface Summary {
   id: string
   amount: number
@@ -19,4 +20,9 @@ export interface Summary {
 export interface FindHabitByDateResponse {
   completed_habits: string[]
   possibles_habits: Habit[]
+}
+
+export interface CreateHabitPayload {
+  title: string
+  week_day: number[]
 }

@@ -12,7 +12,8 @@ export const Button = styled('button', {
   textTransform: 'capitalize',
   
   '&:disabled': {
-    cursor: 'not-allowed'
+    cursor: 'not-allowed',
+    background: '$gray400'
   },
   variants: {
     fullWidth: {
@@ -28,9 +29,6 @@ export const Button = styled('button', {
         '&:hover': {
           background: '$primaryDark'
         },
-        '&:disabled': {
-          background: '$disabled'
-        },
         '> *': {
           color: '$background',
           fontWeight: 600
@@ -40,10 +38,6 @@ export const Button = styled('button', {
       confirm: {
         background: '$valid',
         padding: '0.7rem 1rem',
-
-        '&:disabled': {
-          background: '$disabled'
-        },
         '> *': {
           color: '$heading',
           fontWeight: 600

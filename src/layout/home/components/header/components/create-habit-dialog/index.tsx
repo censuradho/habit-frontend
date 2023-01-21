@@ -1,5 +1,7 @@
 import { Box, Button, Checkbox, Icon, Input, Typography } from '@/components'
-import { FormEvent, PropsWithChildren, useState } from 'react'
+import { useHabit } from '@/context/habit'
+import { habitServer } from '@/services/server/habit'
+import { FormEvent, PropsWithChildren, useEffect, useState } from 'react'
 import * as Styles from './styles'
 
 export const weekDays = [
@@ -15,6 +17,9 @@ export const weekDays = [
 export function CreateHabitDialog ({ children }: PropsWithChildren) {
   const [title, setTitle] = useState('')
   const [weekDaysSelected, setWeekDaysSelected] = useState<number[]>([])
+  const [isLoading, setIsLoading] = useState(false)
+  const { getSummary } = useHabit()
+  const [isOpen, setIsOpen] = useState(true)
 
   const handleChangeChecked = (value: number) => {
     const alreadyChecked = weekDaysSelected.includes(value)
@@ -26,6 +31,7 @@ export function CreateHabitDialog ({ children }: PropsWithChildren) {
       value
     ]))
   }
+
   
   const renderWeekDays = weekDays.map((day, index) => (
     <li key={index}>
@@ -33,17 +39,32 @@ export function CreateHabitDialog ({ children }: PropsWithChildren) {
     </li>
   ))
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault()
+  const handleSubmit = async (event: FormEvent) => {
+    try {
+      event.preventDefault()
+      setIsLoading(true)
 
-    console.log(title)
+      await habitServer.create({
+        title,
+        week_day: weekDaysSelected
+      })
+
+      setTitle('')
+
+      await getSummary()
+      setIsOpen(false)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
-  console.log(weekDaysSelected)
-
-
+  useEffect(() => {
+    setWeekDaysSelected([])
+    setTitle('')
+  }, [isOpen])
+  
   return (
-    <Styles.Root>
+    <Styles.Root open={isOpen} onOpenChange={setIsOpen}>
       <Styles.Trigger asChild>{children}</Styles.Trigger>
       <Styles.Portal>
         <Styles.Overlay />
@@ -54,7 +75,7 @@ export function CreateHabitDialog ({ children }: PropsWithChildren) {
               <Icon name="close" color="heading" />
             </Styles.Close>
           </Box>
-          <Styles.Form onClick={handleSubmit}>
+          <Styles.Form onSubmit={handleSubmit}>
             <Box flexDirection="column" gap={1}>
               <Input
                 id="title"
@@ -69,7 +90,7 @@ export function CreateHabitDialog ({ children }: PropsWithChildren) {
               </Styles.List>
             </Box>
             <Box marginTop={2}>
-              <Button fullWidth variant="confirm" icon={{ name: 'add', color: 'heading' }}>Confirmar</Button>
+              <Button  disabled={!title || weekDaysSelected.length === 0 || isLoading} fullWidth variant="confirm" icon={{ name: 'add', color: 'heading' }}>Confirmar</Button>
             </Box>
           </Styles.Form>
         </Styles.Content>

@@ -16,6 +16,12 @@ export const Root = styled(Checkbox.Root, {
   '&:hover': { borderColor: '$gray400',  },
   '&:focus': { borderColor: '$gray400' },
 
+  '&:disabled': {
+    opacity: 0.4,
+    '&:hover': { borderColor: '$gray700',  },
+    '&:focus': { borderColor: '$gray700' },
+    cursor: 'not-allowed'
+  },
   '&[data-state="checked"]': {
     background: '$valid',
     borderColor: '$valid',

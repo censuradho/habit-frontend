@@ -17,7 +17,6 @@ export function Icon(props: IconProps) {
 
   if (!Svg) return null
   
-  console.log(fill)
   return (
     <>
       <Svg
