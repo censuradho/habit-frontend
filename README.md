@@ -16,6 +16,11 @@ Habits is an application for you to register new habits and monitor the frequenc
 
 In the original project the [Frontend](https://github.com/rocketseat-education/nlw-setup-ignite/tree/main/web) was made in React + Vite + Tailwind and the [Backend](https://github.com/rocketseat-education/nlw-setup-ignite/tree/main/server) in Node.js with Fastify + Prisma. I took the liberty of replacing some technologies, in the Front I replaced Vite with Next.js and Tailwind with Stitches.js, in the Backend I replaced Fastify with Nest.
 
+## Util links
+
+- [Figma UI](https://www.figma.com/community/file/1195326661124171197)
+- [original application repository](https://github.com/rocketseat-education/nlw-setup-ignite)
+
 ## Sumary
 
 - [Getting start](#getting-start)
