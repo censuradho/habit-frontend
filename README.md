@@ -4,9 +4,9 @@
 # Habits
 
 <p>
-<img src="https://img.shields.io/github/last-commit/censuradho/dashboard-frontend?style=for-the-badge"/>&nbsp;&nbsp;&nbsp;
-<img src="https://img.shields.io/github/repo-size/censuradho/dashboard-frontend?style=for-the-badge"/>&nbsp;&nbsp;&nbsp;
-<img src="https://img.shields.io/github/languages/count/censuradho/dashboard-frontend?style=for-the-badge"/>
+<img src="https://img.shields.io/github/last-commit/censuradho/habit-frontend?style=for-the-badge"/>&nbsp;&nbsp;&nbsp;
+<img src="https://img.shields.io/github/repo-size/censuradho/habit-frontend?style=for-the-badge"/>&nbsp;&nbsp;&nbsp;
+<img src="https://img.shields.io/github/languages/count/censuradho/habit-frontend?style=for-the-badge"/>
 </p>
 
 
